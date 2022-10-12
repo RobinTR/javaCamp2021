@@ -34,12 +34,11 @@ public class UserManager implements UserService {
 	public void login(User user) {
 			if (userDao.getEmail(user.getEmail()) && userDao.getPassword(user.getPassword()) && verificationService.checkMailVerificated(user.getEmail())) {
 				System.out.println("Giriş başarılı: " + user.getEmail());
-				return;
 			} else if (userDao.getEmail(user.getEmail()) && userDao.getPassword(user.getPassword())) {
 				System.out.println("Lütfen eposta hesabınıza gönderilen mail'den hesabınızı doğrulayın.");
-				return;
+			} else {
+				System.out.println("Kullanıcı adı veya şifre hatalı.");
 			}
-		System.out.println("Kullanıcı adı veya şifre hatalı.");
 	}
 
 	@Override
